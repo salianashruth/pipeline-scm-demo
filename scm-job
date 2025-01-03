@@ -1,0 +1,17 @@
+pipeline {
+    agent {
+       label 'slave-node'
+    }
+    stages {
+        stage('CleanWS') {
+            steps {
+               sh 'rm -rf /var/lib/jenkins/workspace/Pipelinejob/*'
+            }
+        }
+        stage('CloneRepo') {
+            steps {
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/salianashruth/java-rep.git']])
+            }
+        }
+    }
+}
