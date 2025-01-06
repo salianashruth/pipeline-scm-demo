@@ -1,11 +1,9 @@
 pipeline {
-    agent {
-       label 'slave-node'
-    }
-    stages {
+    agent any 
+        stages {
         stage('CleanWS') {
             steps {
-               sh 'rm -rf /var/lib/jenkins/workspace/Pipelinejob/*'
+               sh 'rm -rf /var/lib/jenkins/workspace/pipeline_job/*'
             }
         }
         stage('CloneRepo') {
