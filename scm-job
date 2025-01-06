@@ -11,5 +11,11 @@ pipeline {
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/salianashruth/java-rep.git']])
             }
         }
+		stage('build') {
+            steps {
+                 sh 'mvn clean package'
+            }
+        }
+		
     }
 }
